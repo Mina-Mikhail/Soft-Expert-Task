@@ -3,6 +3,7 @@ package com.mina_mikhail.soft_expert_task.ui.main;
 import android.app.Activity;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import com.mina_mikhail.soft_expert_task.BR;
 import com.mina_mikhail.soft_expert_task.R;
@@ -10,6 +11,7 @@ import com.mina_mikhail.soft_expert_task.data.model.api.Car;
 import com.mina_mikhail.soft_expert_task.databinding.ActivityMainBinding;
 import com.mina_mikhail.soft_expert_task.ui.base.BaseActivity;
 import com.mina_mikhail.soft_expert_task.utils.CommonUtils;
+import com.mina_mikhail.soft_expert_task.utils.EndlessRecyclerViewScrollListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,26 +70,58 @@ public class MainActivity
   private void initCarsRecyclerView() {
     CommonUtils.configRecyclerView(getViewDataBinding().includedList.recyclerView, true);
     carsAdapter = new CarsAdapter(cars);
+    carsAdapter.setHasStableIds(true);
     getViewDataBinding().includedList.recyclerView.setAdapter(carsAdapter);
     getViewDataBinding().includedList.reloadBtn.setOnClickListener(v -> getData());
+
+    getViewDataBinding().includedList.recyclerView.addOnScrollListener(
+        new EndlessRecyclerViewScrollListener(
+            (LinearLayoutManager) getViewDataBinding().includedList.recyclerView.getLayoutManager(),
+            getViewModel().getCurrentPage()) {
+          @Override
+          public void onLoadMore(int page, int totalItemsCount) {
+            if (getViewModel().shouldLoadMore()) {
+              getViewModel().setShouldLoadMore(false);
+              getViewModel().setLoading(true);
+
+              getViewModel().getCars();
+            }
+          }
+
+          @Override
+          public boolean isLoading() {
+            return getViewModel().isLoading();
+          }
+        });
   }
 
   private void getData() {
     IS_API_CALLED = false;
     showProgress();
-    getViewModel().getCars(1);
+    getViewModel().getCars();
   }
 
   @Override
   protected void setUpObservables() {
-    getViewModel().getCarsData().observe(this, cars -> {
+    getViewModel().getCarsData().observe(this, carList -> {
       IS_API_CALLED = true;
       SHOULD_CALL_API_AGAIN = false;
-      if (cars != null) {
-        carsAdapter.replaceItems(cars);
-        showData();
+      if (carList != null) {
+        cars.addAll(carList);
+        if (this.cars.size() == 0) {
+          showNoData();
+        } else {
+          showData();
+          carsAdapter.notifyDataSetChanged();
+        }
       } else {
         showNoData();
+      }
+    });
+
+    getViewModel().clearOldList().observe(this, clearOldList -> {
+      if (clearOldList != null) {
+        cars.clear();
       }
     });
   }

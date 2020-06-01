@@ -58,6 +58,12 @@ public class CarsAdapter
     }
   }
 
+  @Override
+  public long getItemId(int position) {
+    // To solve blinking after notifyDataSetChanged()
+    return position;
+  }
+
   // To solve the problem of fast scroll
   @Override
   public void onViewDetachedFromWindow(@NonNull RecyclerView.ViewHolder holder) {
