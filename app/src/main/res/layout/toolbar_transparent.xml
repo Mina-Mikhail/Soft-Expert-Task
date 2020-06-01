@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+  <android.support.v7.widget.Toolbar
+      android:id="@+id/toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="?attr/actionBarSize"
+      android:background="@color/transparent"
+      app:contentInsetLeft="0dp"
+      app:contentInsetStart="0dp"
+      app:subtitleTextColor="@color/white"
+      app:titleTextColor="@color/white"
+      >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="@dimen/activity_padding"
+        android:paddingEnd="@dimen/activity_padding"
+        >
+
+      <ImageView
+          android:id="@+id/back_iv"
+          android:layout_width="@dimen/dimen28"
+          android:layout_height="@dimen/dimen28"
+          android:layout_alignParentStart="true"
+          android:layout_centerVertical="true"
+          android:background="?attr/selectableItemBackgroundBorderless"
+          android:clickable="true"
+          android:focusable="true"
+          android:padding="@dimen/dimen4"
+          android:tint="@color/colorPrimary"
+          />
+
+      <TextView
+          android:id="@+id/toolbar_title"
+          style="@style/TextBoldFont"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerHorizontal="true"
+          android:layout_centerVertical="true"
+          android:maxLines="1"
+          android:paddingStart="@dimen/dimen30"
+          android:paddingEnd="@dimen/dimen30"
+          android:singleLine="true"
+          android:textColor="@color/white"
+          android:textSize="@dimen/text_size18"
+          tools:text="Title"
+          />
+
+    </RelativeLayout>
+
+  </android.support.v7.widget.Toolbar>
+
+</layout>
