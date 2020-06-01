@@ -9,12 +9,7 @@
   <string name="some_error">Some error occurred</string>
   <string name="reload">Reload</string>
   <string name="hide">Hide</string>
-  <string name="no_image">No Image</string>
   <string name="list_no_result">Sorry, There are no result here!</string>
-  <string name="success_remote_load">Get cars from remote successfully</string>
-  <string name="success_local_load">Get cars from local room successfully</string>
-  <string name="success_remote_load_details">Get cars details from remote successfully</string>
-  <string name="success_local_load_details">Get cars details from local room successfully</string>
 
   <!-- Splash -->
   <string name="splash_title">Feel Free to explore our cars</string>
