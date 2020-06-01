@@ -1,6 +1,10 @@
 # Soft Expert Task
 This repo for Soft Expert Android Task
 
+| Home Screen                    | 
+|:------------------------------:|
+|![](https://github.com/Mina-Mikhail/Soft-Expert-Task/blob/master/Shots/Home%20Screen.jpg) | 
+
 
 ## <b>Task Description: </b> <br />
 :point_right: Need to show list of cars returned from api. <br />
