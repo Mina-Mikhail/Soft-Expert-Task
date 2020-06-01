@@ -60,6 +60,8 @@ public class MainActivity
     initCarsRecyclerView();
 
     getData();
+
+    initSwipeRefresh();
   }
 
   private void initToolBar() {
@@ -84,6 +86,8 @@ public class MainActivity
               getViewModel().setShouldLoadMore(false);
               getViewModel().setLoading(true);
 
+              getViewDataBinding().includedList.swipeContainer.setRefreshing(true);
+              IS_API_CALLED = false;
               getViewModel().getCars();
             }
           }
@@ -99,6 +103,23 @@ public class MainActivity
     IS_API_CALLED = false;
     showProgress();
     getViewModel().getCars();
+  }
+
+  private void initSwipeRefresh() {
+    // Change progress color
+    getViewDataBinding().includedList.swipeContainer
+        .setColorSchemeColors(getResources().getColor(R.color.colorAccent),
+            getResources().getColor(R.color.colorPrimary));
+
+    // Set listener for swipe
+    getViewDataBinding().includedList.swipeContainer.setOnRefreshListener(
+        () -> {
+          getViewModel().setCurrentPage(1);
+          getViewDataBinding().includedList.swipeContainer.setRefreshing(true);
+
+          IS_API_CALLED = false;
+          getViewModel().getCars();
+        });
   }
 
   @Override
@@ -127,13 +148,14 @@ public class MainActivity
   }
 
   private void showData() {
-    getViewDataBinding().includedList.recyclerView.setVisibility(View.VISIBLE);
+    getViewDataBinding().includedList.swipeContainer.setRefreshing(false);
+    getViewDataBinding().includedList.swipeContainer.setVisibility(View.VISIBLE);
     getViewDataBinding().includedList.container.setVisibility(View.GONE);
     getViewDataBinding().includedList.progressBar.setVisibility(View.GONE);
   }
 
   private void showNoData() {
-    getViewDataBinding().includedList.recyclerView.setVisibility(View.GONE);
+    getViewDataBinding().includedList.swipeContainer.setVisibility(View.GONE);
     getViewDataBinding().includedList.progressBar.setVisibility(View.GONE);
     getViewDataBinding().includedList.emptyViewContainer.setVisibility(View.VISIBLE);
     getViewDataBinding().includedList.internetErrorViewContainer.setVisibility(View.GONE);
@@ -142,7 +164,7 @@ public class MainActivity
   }
 
   private void showProgress() {
-    getViewDataBinding().includedList.recyclerView.setVisibility(View.GONE);
+    getViewDataBinding().includedList.swipeContainer.setVisibility(View.GONE);
     getViewDataBinding().includedList.progressBar.setVisibility(View.VISIBLE);
     getViewDataBinding().includedList.emptyViewContainer.setVisibility(View.GONE);
     getViewDataBinding().includedList.internetErrorViewContainer.setVisibility(View.GONE);
@@ -151,7 +173,7 @@ public class MainActivity
   }
 
   private void showNoInternet() {
-    getViewDataBinding().includedList.recyclerView.setVisibility(View.GONE);
+    getViewDataBinding().includedList.swipeContainer.setVisibility(View.GONE);
     getViewDataBinding().includedList.progressBar.setVisibility(View.GONE);
     getViewDataBinding().includedList.emptyViewContainer.setVisibility(View.GONE);
     getViewDataBinding().includedList.internetErrorViewContainer.setVisibility(View.VISIBLE);
