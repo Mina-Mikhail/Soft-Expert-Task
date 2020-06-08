@@ -8,7 +8,7 @@ android {
     targetSdkVersion compile_sdk_version
     versionCode 1
     versionName "1.0"
-    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
   }
   buildTypes {
     release {
@@ -20,9 +20,6 @@ android {
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
-  }
-  packagingOptions {
-    exclude 'META-INF/services/javax.annotation.processing.Processor' // butterknife
   }
   dataBinding {
     enabled = true
@@ -47,17 +44,17 @@ dependencies {
   }
 
   //noinspection GradleCompatible
-  implementation "com.android.support:appcompat-v7:$support_version"
-  implementation "com.android.support:support-v4:$support_version"
-  implementation "com.android.support:design:$support_version"
-  implementation "com.android.support:cardview-v7:$support_version"
+  implementation "androidx.appcompat:appcompat:$appcompat"
+  implementation "androidx.legacy:legacy-support-v4:$support_version"
+  implementation "com.google.android.material:material:$appcompat"
+  implementation "androidx.cardview:cardview:$support_version"
   implementation "com.makeramen:roundedimageview:$rounded_image_view"
   implementation "com.irozon.sneaker:sneaker:$sneaker"
 
   // Arch Components
-  implementation "android.arch.lifecycle:extensions:$arch_comp_version"
-  implementation "android.arch.lifecycle:viewmodel:$arch_comp_version"
-  annotationProcessor "android.arch.lifecycle:compiler:$arch_comp_version"
+  implementation "androidx.lifecycle:lifecycle-extensions:$arch_comp_version"
+  implementation "androidx.lifecycle:lifecycle-viewmodel:$arch_comp_version"
+  annotationProcessor "androidx.lifecycle:lifecycle-compiler:$arch_comp_version"
 
   // RxJava & RxAndroid
   implementation "io.reactivex.rxjava2:rxjava:$rxjava"
@@ -88,8 +85,8 @@ dependencies {
 
   // Testing utils
   testImplementation "junit:junit:$junit"
-  androidTestImplementation "com.android.support.test:runner:$support_test_runner"
-  androidTestImplementation "com.android.support.test.espresso:espresso-core:$support_test_espresso"
+  androidTestImplementation "androidx.test.ext:junit:$junit_ext"
+  androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
 }
 
 // Logger out test results to console

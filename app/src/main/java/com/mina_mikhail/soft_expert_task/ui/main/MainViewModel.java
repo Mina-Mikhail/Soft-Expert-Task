@@ -1,7 +1,7 @@
 package com.mina_mikhail.soft_expert_task.ui.main;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import com.mina_mikhail.soft_expert_task.data.model.api.Car;
 import com.mina_mikhail.soft_expert_task.data.remote.ApiClient;
 import com.mina_mikhail.soft_expert_task.data.remote.NetworkHelper;

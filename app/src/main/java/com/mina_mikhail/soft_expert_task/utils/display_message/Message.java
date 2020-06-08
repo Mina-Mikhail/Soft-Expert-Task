@@ -1,6 +1,6 @@
 package com.mina_mikhail.soft_expert_task.utils.display_message;
 
-import android.support.annotation.StringRes;
+import androidx.annotation.StringRes;
 
 public class Message {
 

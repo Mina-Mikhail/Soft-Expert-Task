@@ -1,6 +1,6 @@
 package com.mina_mikhail.soft_expert_task.ui.splash;
 
-import android.arch.lifecycle.LiveData;
+import androidx.lifecycle.LiveData;
 import com.mina_mikhail.soft_expert_task.ui.base.BaseViewModel;
 import com.mina_mikhail.soft_expert_task.utils.SingleLiveEvent;
 

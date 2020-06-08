@@ -1,15 +1,17 @@
 package com.mina_mikhail.soft_expert_task.ui.main;
 
 import android.app.Activity;
-import android.arch.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
-import android.support.v7.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.View;
 import com.mina_mikhail.soft_expert_task.BR;
 import com.mina_mikhail.soft_expert_task.R;
 import com.mina_mikhail.soft_expert_task.data.model.api.Car;
 import com.mina_mikhail.soft_expert_task.databinding.ActivityMainBinding;
 import com.mina_mikhail.soft_expert_task.ui.base.BaseActivity;
+import com.mina_mikhail.soft_expert_task.ui.splash.SplashViewModel;
 import com.mina_mikhail.soft_expert_task.utils.CommonUtils;
 import com.mina_mikhail.soft_expert_task.utils.EndlessRecyclerViewScrollListener;
 import java.util.ArrayList;
@@ -48,7 +50,7 @@ public class MainActivity
 
   @Override
   protected void setUpViewModel() {
-    mViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+    mViewModel = new ViewModelProvider(this).get(MainViewModel.class);
     getViewDataBinding().setViewModel(getViewModel());
     initBaseObservables();
   }

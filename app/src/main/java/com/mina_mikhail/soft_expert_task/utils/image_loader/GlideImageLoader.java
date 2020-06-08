@@ -1,7 +1,7 @@
 package com.mina_mikhail.soft_expert_task.utils.image_loader;
 
 import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;

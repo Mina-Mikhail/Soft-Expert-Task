@@ -1,6 +1,6 @@
 package com.mina_mikhail.soft_expert_task.ui.base;
 
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModel;
 import com.mina_mikhail.soft_expert_task.data.remote.NetworkHelper;
 import com.mina_mikhail.soft_expert_task.utils.DisplayLoader;
 import com.mina_mikhail.soft_expert_task.utils.SingleLiveEvent;

@@ -3,32 +3,33 @@
 buildscript {
   ext {
     compile_sdk_version = 28
-    min_sdk_version = 17
+    min_sdk_version = 21
 
-    support_version = '28.0.0'
-    arch_comp_version = '1.1.1'
+    appcompat = '1.1.0'
+    support_version = '1.0.0'
+    arch_comp_version = '2.2.0'
 
     rounded_image_view = '2.3.0'
-    sneaker = '1.0.2'
+    sneaker = '2.0.0'
 
     rxjava = '2.2.0'
     rxandroid = '2.1.1'
     uber_autodispose = '1.1.0'
 
-    retrofit = '2.5.0'
+    retrofit = '2.9.0'
     gson = '2.8.5'
     stetho = '1.5.1'
 
-    glide = '4.8.0'
+    glide = '4.11.0'
 
-    interceptor = '3.9.0'
-    loading_animations = '1.2.0'
-    annotations = '16.0.1'
-    parceler_api = '1.1.11'
+    interceptor = '4.7.2'
+    loading_animations = '1.4.0'
+    annotations = '16.0.2'
+    parceler_api = '1.1.13'
 
     junit = '4.12'
-    support_test_runner = '1.0.2'
-    support_test_espresso = '3.0.2'
+    junit_ext = '1.1.1'
+    espresso = '3.2.0'
   }
   repositories {
     google()

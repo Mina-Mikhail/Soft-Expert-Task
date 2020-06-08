@@ -1,6 +1,6 @@
 package com.mina_mikhail.soft_expert_task.ui.base;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
 public abstract class BaseViewHolder
